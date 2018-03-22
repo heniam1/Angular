@@ -1,0 +1,23 @@
+{
+  "name": "angular",
+  "version": "1.0.0",
+  "description": "Learning Angular- Coursera",
+  "main": "index.js",
+  "dependencies": {
+    "lite-server": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "Error: no test specified"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heniam1/Angular.git"
+  },
+  "author": "HenoK KeflU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heniam1/Angular/issues"
+  },
+  "homepage": "https://github.com/heniam1/Angular#readme"
+}
