@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { BreakPointRegistry } from '../breakpoints/break-point-registry';
 import { MatchMedia } from '../match-media/match-media';
 import { MediaChange } from '../media-change';
+import { PrintHook } from './print-hook';
 declare type ClearCallback = () => void;
 declare type UpdateCallback = (val: any) => void;
 export interface ElementMatcher {
@@ -16,20 +17,21 @@ export interface ElementMatcher {
 export declare class MediaMarshaller {
     protected matchMedia: MatchMedia;
     protected breakpoints: BreakPointRegistry;
+    protected hook: PrintHook;
     private activatedBreakpoints;
     private elementMap;
     private elementKeyMap;
     private watcherMap;
-    private builderMap;
-    private clearBuilderMap;
+    private updateMap;
+    private clearMap;
     private subject;
-    readonly activatedBreakpoint: string;
-    constructor(matchMedia: MatchMedia, breakpoints: BreakPointRegistry);
+    readonly activatedAlias: string;
+    constructor(matchMedia: MatchMedia, breakpoints: BreakPointRegistry, hook: PrintHook);
     /**
-     * activate or deactivate a given breakpoint
+     * Update styles on breakpoint activates or deactivates
      * @param mc
      */
-    activate(mc: MediaChange): void;
+    onMediaChange(mc: MediaChange): void;
     /**
      * initialize the marshaller with necessary elements for delegation on an element
      * @param element
@@ -82,6 +84,12 @@ export declare class MediaMarshaller {
      * @param element
      */
     releaseElement(element: HTMLElement): void;
+    /**
+     * trigger an update for a given element and key (e.g. layout)
+     * @param element
+     * @param key
+     */
+    triggerUpdate(element: HTMLElement, key?: string): void;
     /** Cross-reference for HTMLElement with directive key */
     private buildElementKeyMap;
     /**
@@ -98,7 +106,10 @@ export declare class MediaMarshaller {
      * @param bpMap
      * @param key
      */
-    private getFallback;
-    private registerBreakpoints;
+    private getActivatedValues;
+    /**
+     * Watch for mediaQuery breakpoint activations
+     */
+    private observeActivations;
 }
 export {};
