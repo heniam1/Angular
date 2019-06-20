@@ -15,14 +15,8 @@ import { BreakPointRegistry } from '../../breakpoints/break-point-registry';
  */
 export declare class MockMatchMedia extends MatchMedia {
     private _breakpoints;
-    /** Special flag used to test BreakPoint registrations with MatchMedia */
     autoRegisterQueries: boolean;
-    /**
-     * Allow fallback to overlapping mediaQueries to determine
-     * activatedInput(s).
-     */
     useOverlaps: boolean;
-    protected _registry: Map<string, MockMediaQueryList>;
     constructor(_zone: NgZone, _platformId: Object, _document: any, _breakpoints: BreakPointRegistry);
     /** Easy method to clear all listeners for all mediaQueries */
     clearAll(): void;
@@ -31,7 +25,7 @@ export declare class MockMatchMedia extends MatchMedia {
     /** Converts an optional mediaQuery alias to a specific, valid mediaQuery */
     _validateQuery(queryOrAlias: string): string;
     /**
-     * Manually activate any overlapping mediaQueries to simulate
+     * Manually onMediaChange any overlapping mediaQueries to simulate
      * similar functionality in the window.matchMedia()
      */
     private _activateWithOverlaps;
@@ -43,7 +37,7 @@ export declare class MockMatchMedia extends MatchMedia {
      *
      */
     private _activateByQuery;
-    /** Deactivate all current Mock MQLs */
+    /** Deactivate all current MQLs and reset the buffer */
     private _deactivateAll;
     /** Insure the mediaQuery is registered with MatchMedia */
     private _registerMediaQuery;
@@ -51,9 +45,8 @@ export declare class MockMatchMedia extends MatchMedia {
      * Call window.matchMedia() to build a MediaQueryList; which
      * supports 0..n listeners for activation/deactivation
      */
-    protected _buildMQL(query: string): MediaQueryList;
+    protected buildMQL(query: string): MediaQueryList;
     protected readonly hasActivated: boolean;
-    private _actives;
 }
 /**
  * Special internal class to simulate a MediaQueryList and
@@ -79,7 +72,7 @@ export declare class MockMediaQueryList implements MediaQueryList {
     /** Add a listener to our internal list to activate later */
     addListener(listener: MediaQueryListListener): void;
     /** Don't need to remove listeners in the testing environment */
-    removeListener(_: EventListenerOrEventListenerObject | null): void;
+    removeListener(_: MediaQueryListListener | null): void;
     addEventListener<K extends keyof MediaQueryListEventMap>(_: K, __: (this: MediaQueryList, ev: MediaQueryListEventMap[K]) => any, ___?: boolean | AddEventListenerOptions): void;
     removeEventListener<K extends keyof MediaQueryListEventMap>(_: K, __: (this: MediaQueryList, ev: MediaQueryListEventMap[K]) => any, ___?: boolean | EventListenerOptions): void;
     dispatchEvent(_: Event): boolean;

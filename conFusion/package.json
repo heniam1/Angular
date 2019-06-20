@@ -6,7 +6,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lite": "lite-server"
   },
-
   "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.",
   "main": "index.html",
   "author": "henok K",
@@ -16,10 +15,32 @@
     "url": "git+https://github.com/heniam1/Angular.git"
   },
   "keywords": [
-    "angular"
+    "@angular/cli"
   ],
   "bugs": {
     "url": "https://github.com/heniam1/Angular/issues"
   },
-  "homepage": "https://github.com/heniam1/Angular#readme"
+  "homepage": "https://github.com/heniam1/Angular#readme",
+  "dependencies": {
+    "@angular/animations": "^8.0.1",
+    "@angular/cdk": "^8.0.1",
+    "@angular/common": "^8.0.1",
+    "@angular/compiler": "^8.0.1",
+    "@angular/compiler-cli": "^8.0.1",
+    "@angular/core": "^8.0.1",
+    "@angular/flex-layout": "^8.0.0-beta.26",
+    "@angular/forms": "^8.0.1",
+    "@angular/material": "^8.0.1",
+    "@angular/platform-browser": "^8.0.1",
+    "@angular/platform-browser-dynamic": "^8.0.1",
+    "@angular/router": "^8.0.1",
+    "core-util-is": "^1.0.2",
+    "font-awesome": "^4.7.0",
+    "hammerjs": "^2.0.8",
+    "zone.js": "^0.9.1"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.800.3",
+    "@angular/cli": "^8.0.3"
+  }
 }
